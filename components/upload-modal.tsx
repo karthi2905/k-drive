@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { Upload, X, File, CheckCircle } from "lucide-react";
+import { Upload, X, File } from "lucide-react";
 import { Modal } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
 import { formatBytes } from "@/lib/utils";
@@ -43,7 +43,7 @@ export function UploadModal({ isOpen, onClose, onUpload }: UploadModalProps) {
             toast.success(`${files.length} file(s) uploaded successfully`);
             setFiles([]);
             onClose();
-        } catch (error) {
+        } catch (_error) {
             toast.error("Failed to upload files");
         } finally {
             setUploading(false);
@@ -57,8 +57,8 @@ export function UploadModal({ isOpen, onClose, onUpload }: UploadModalProps) {
                 <div
                     {...getRootProps()}
                     className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all ${isDragActive
-                            ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
-                            : "border-gray-300 dark:border-gray-600 hover:border-blue-400"
+                        ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
+                        : "border-gray-300 dark:border-gray-600 hover:border-blue-400"
                         }`}
                 >
                     <input {...getInputProps()} />
